@@ -26,4 +26,28 @@ export class WorkflowService {
       }).toPromise();
     })
   }
+
+  all() {
+    return this.authService.token()?.then(token => {
+      return this.http.get(ApiEndpoints.workflow.all, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+          Accept: 'application/json',
+          'Content-Type': 'application/json'
+        }
+      }).toPromise();
+    })
+  }
+
+  get(id: string) {
+    return this.authService.token()?.then(token => {
+      return this.http.get<any>(`${ApiEndpoints.workflow.get}/${id}`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+          Accept: 'application/json',
+          'Content-Type': 'application/json'
+        }
+      }).toPromise();
+    })
+  }
 }

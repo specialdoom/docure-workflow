@@ -1,1 +1,10 @@
-<flowchart></flowchart>
+<div class="workflows-page">
+  <div class="workflows-page-navbar">
+    <docure-button (click)="goToWorkflow('')">Create a workflow</docure-button>
+  </div>
+  <div class="workflows-container">
+    <div *ngFor="let item of workflows" class="workflows-item">
+      <docure-button link (click)="goToWorkflow(item.id)">{{item.title}}</docure-button>
+    </div>
+  </div>
+</div>

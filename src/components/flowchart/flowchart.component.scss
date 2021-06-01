@@ -1,37 +1,6 @@
-.flowchart-container {
-  display: flex;
-  width: 100%;
-
-  .flowchart-sider {
-    width: 20%;
-  }
-
-  .flowchart-sider {
-    background: #282c34;
-    width: 80%;
-    .flowchart-actions {
-      display: flex;
-      flex-direction: column;
-      height: calc(100vh - 464px);
-
-      & span {
-        color: white;
-        text-align: center;
-        padding: 10px 0;
-      }
-    }
-  }
-}
-
 .myDiagramDiv {
   background: #282c34;
   width: calc(100vw - 254px);
   height: calc(100vh - 66px);
   border: 1px solid black;
-}
-
-.myPaletteDiv {
-  background: #282c34;
-  width: 250px;
-  height: 400px;
 }

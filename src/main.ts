@@ -3,6 +3,7 @@ import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import '@specialdoom/docure-button';
 import '@specialdoom/docure-header';
 import '@specialdoom/docure-icon';
+import '@specialdoom/docure-banner';
 import { AppModule } from './components/app.module';
 import { environment } from './environments/environment';
 

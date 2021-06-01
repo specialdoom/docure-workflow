@@ -1,0 +1,31 @@
+.workflow-container {
+  display: flex;
+  width: 100%;
+
+  .workflow-sider {
+    width: 20%;
+  }
+
+  .workflow-sider {
+    background: #282c34;
+    width: 80%;
+    .workflow-actions {
+      display: flex;
+      flex-direction: column;
+      height: calc(100vh - 464px);
+
+      & span {
+        color: white;
+        text-align: center;
+        padding: 10px 0;
+      }
+
+      & input {
+        height: 50px;
+        padding: 5px 0;
+        text-align: center;
+        font-size: 14px;
+      }
+    }
+  }
+}

@@ -23,6 +23,36 @@ admin.initializeApp({
 
 const database = admin.database();
 
+export async function all(req: Request, res: Response) {
+  try {
+    const workflows: any[] = [];
+
+    (await database.ref('workflows').once("value")).forEach(item => {
+      workflows.push({ id: item.key, title: item.val().title });
+    });
+
+    return res.status(200).send(workflows);
+  } catch (e) {
+    return handleError(res, e);
+  }
+}
+
+export async function get(req: Request, res: Response) {
+  const { id } = req.params;
+
+  if (!id) {
+    return res.status(400).send({ message: 'No id provided!' });
+  }
+
+  try {
+    const snapshot = await database.ref('workflows').child(id).once("value");
+
+    return snapshot.val() ? res.status(200).send(JSON.stringify(snapshot.val())) : res.status(404).send({ message: 'Workflows not found!' });
+  } catch (e) {
+    return handleError(res, e);
+  }
+}
+
 export async function add(req: Request, res: Response) {
   const { nodes, links, title } = req.body;
 

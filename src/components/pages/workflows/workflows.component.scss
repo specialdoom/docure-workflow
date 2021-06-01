@@ -1,0 +1,28 @@
+.workflows-page {
+  display: flex;
+  flex-direction: column;
+  & .workflows-page-navbar {
+    box-sizing: border-box;
+    padding: 15px 0;
+    width: 100;
+    display: flex;
+    justify-content: center;
+  }
+
+  & .workflows-container {
+    display: flex;
+    flex: 33.33%;
+    justify-content: center;
+
+    & .workflows-item {
+      height: 100px;
+      width: 200px;
+      padding: 20px;
+      border: 1px solid cadetblue;
+      border-radius: 20px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+}

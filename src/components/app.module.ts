@@ -9,6 +9,8 @@ import { FlowchartComponent } from './flowchart/flowchart.component';
 import { HomeComponent } from './pages/home/home.component';
 import { WorkflowsComponent } from './pages/workflows/workflows.component';
 import { HttpClientModule } from '@angular/common/http';
+import { PaletteCompoment } from './palette/palette.component';
+import { WorkflowComponent } from './pages/workflow/workflow.component';
 
 @NgModule({
   declarations: [
@@ -16,6 +18,8 @@ import { HttpClientModule } from '@angular/common/http';
     FlowchartComponent,
     WorkflowsComponent,
     HomeComponent,
+    PaletteCompoment,
+    WorkflowComponent
   ],
   imports: [
     BrowserModule,

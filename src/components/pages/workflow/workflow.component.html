@@ -1,0 +1,17 @@
+<div class='workflow-container'>
+  <div class='workflow-sider'>
+    <div class='workflow-actions'>
+      <span>Workflow details</span>
+      <input placeholder="Insert workflow title" [(ngModel)]="title" />
+      <br />
+      <docure-button (click)="show()">Save workflow</docure-button>
+      <br />
+      <docure-button (click)="reset()" secondary>Reset</docure-button>
+    </div>
+    <palette></palette>
+  </div>
+  <div class='workflow-main'>
+    <flowchart *ngIf="display" [diagramNodeData]="diagramNodeData" [diagramLinkData]="diagramLinkData">
+    </flowchart>
+  </div>
+</div>
