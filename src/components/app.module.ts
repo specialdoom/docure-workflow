@@ -1,4 +1,5 @@
 import { CUSTOM_ELEMENTS_SCHEMA, NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { GojsAngularModule } from 'gojs-angular';
 
@@ -7,18 +8,21 @@ import { AppComponent } from './app.component';
 import { FlowchartComponent } from './flowchart/flowchart.component';
 import { HomeComponent } from './pages/home/home.component';
 import { WorkflowsComponent } from './pages/workflows/workflows.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
     AppComponent,
     FlowchartComponent,
     WorkflowsComponent,
-    HomeComponent
+    HomeComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    GojsAngularModule
+    GojsAngularModule,
+    FormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent],

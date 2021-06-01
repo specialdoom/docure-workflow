@@ -1,6 +1,7 @@
-import { Component, ViewChild, ViewEncapsulation } from '@angular/core';
+import { Component, ElementRef, ViewChild, ViewEncapsulation } from '@angular/core';
 import * as go from 'gojs';
 import { DataSyncService, DiagramComponent } from 'gojs-angular';
+import { WorkflowService } from 'src/services/workflow.service';
 import { addNodesTemplate } from '../../utils/flowchart.utils';
 
 const $ = go.GraphObject.make;
@@ -14,6 +15,71 @@ const $ = go.GraphObject.make;
 export class FlowchartComponent {
   @ViewChild('myDiagram', { static: true })
   public myDiagramComponent!: DiagramComponent;
+
+  public title: string = '';
+
+  public diagramNodeData: Array<any> = [];
+  public diagramLinkData: Array<any> = [];
+  public diagramDivClassName: string = 'myDiagramDiv';
+  public diagramModelData: any = { prop: 'value' };
+  public skipsDiagramUpdate = false;
+
+  public paletteNodeData: Array<any> = [
+    { key: 'Start', category: 'Start' },
+    { key: 'Step', },
+    { key: 'Conditional', category: 'Conditional' },
+    { key: 'End', category: 'End' }
+  ];
+  public paletteModelData: any = { prop: 'val' };
+  public paletteDivClassName = 'myPaletteDiv';
+  public skipsPaletteUpdate = true;
+  workflowService: WorkflowService;
+
+  constructor(workflowService: WorkflowService) {
+    this.workflowService = workflowService;
+  }
+
+  show() {
+    if (!this.title) {
+      alert('No title provided');
+      return;
+    }
+
+    if (this.diagramNodeData.length === 0 || this.diagramLinkData.length === 0) {
+      alert('Create workflow!');
+      return;
+    }
+
+    const errors: [] = this.diagramContainsAllRequiredSteps();
+
+    if (errors.length !== 0) {
+      alert(errors.join('\n'));
+      return;
+    }
+
+    this.workflowService.add(this.title, this.diagramNodeData, this.diagramLinkData)?.then(data => {
+      this.reset();
+      alert('Workflow added successfully!');
+
+    }).catch(e => {
+      alert('Something went wrong!');
+    });
+  }
+
+  diagramContainsAllRequiredSteps() {
+    const errors: any = [];
+    this.diagramNodeData.filter(item => item.key.includes('Start')).length > 1 && errors.push('Only one Start step');
+    this.diagramNodeData.filter(item => item.key.includes('Start')).length === 0 && errors.push('Start step required');
+    this.diagramNodeData.filter(item => item.key.includes('Step')).length === 0 && errors.push('At least one step required');
+    this.diagramNodeData.filter(item => item.key.includes('End')).length === 0 && errors.push('End step required');
+    this.diagramNodeData.filter(item => item.key.includes('End')).length > 1 && errors.push('Only one End step');
+    return errors;
+  }
+
+  reset() {
+    this.title = '';
+    this.myDiagramComponent.diagram.clear();
+  }
 
   public initDiagram(): go.Diagram {
     const diagram = $(go.Diagram, {
@@ -65,12 +131,6 @@ export class FlowchartComponent {
     return diagram;
   }
 
-  public diagramNodeData: Array<any> = [];
-  public diagramLinkData: Array<any> = [];
-  public diagramDivClassName: string = 'myDiagramDiv';
-  public diagramModelData: any = { prop: 'value' };
-  public skipsDiagramUpdate = false;
-
   public diagramModelChange = (changes: go.IncrementalData) => {
     this.skipsDiagramUpdate = true;
 
@@ -92,13 +152,4 @@ export class FlowchartComponent {
 
     return palette;
   }
-  public paletteNodeData: Array<any> = [
-    { key: 'Start', category: 'Start' },
-    { key: 'Step', },
-    { key: 'Conditional', category: 'Conditional' },
-    { key: 'End', category: 'End' }
-  ];
-  public paletteModelData: any = { prop: 'val' };
-  public paletteDivClassName = 'myPaletteDiv';
-  public skipsPaletteUpdate = true;
 }

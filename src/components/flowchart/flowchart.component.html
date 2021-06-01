@@ -1,10 +1,23 @@
-<docure-button>Show</docure-button>
 <div class='flowchart-container'>
-  <gojs-palette [initPalette]='initPalette' [nodeDataArray]='paletteNodeData' [modelData]='paletteModelData'
-    [skipsPaletteUpdate]='skipsPaletteUpdate' [divClassName]='paletteDivClassName'>
-  </gojs-palette>
-  <gojs-diagram [initDiagram]='initDiagram' [nodeDataArray]='diagramNodeData' [linkDataArray]='diagramLinkData'
-    [modelData]='diagramModelData' [skipsDiagramUpdate]='skipsDiagramUpdate' (modelChange)='diagramModelChange($event)'
-    [divClassName]='diagramDivClassName'>
-  </gojs-diagram>
+  <div class='flowchart-sider'>
+    <div class='flowchart-actions'>
+      <span>Workflow details</span>
+      <input placeholder="Insert workflow title" [(ngModel)]="title" />
+      <br />
+      <docure-button (click)="show()">Save workflow</docure-button>
+      <br />
+      <docure-button (click)="diagramContainsAllRequiredSteps()">Validate</docure-button>
+      <br />
+      <docure-button (click)="reset()" secondary>Reset</docure-button>
+    </div>
+    <gojs-palette [initPalette]='initPalette' [nodeDataArray]='paletteNodeData' [modelData]='paletteModelData'
+      [skipsPaletteUpdate]='skipsPaletteUpdate' [divClassName]='paletteDivClassName'>
+    </gojs-palette>
+  </div>
+  <div class='flowchart-main'>
+    <gojs-diagram #myDiagram [initDiagram]='initDiagram' [nodeDataArray]='diagramNodeData' [linkDataArray]='diagramLinkData'
+      [modelData]='diagramModelData' [skipsDiagramUpdate]='skipsDiagramUpdate'
+      (modelChange)='diagramModelChange($event)' [divClassName]='diagramDivClassName'>
+    </gojs-diagram>
+  </div>
 </div>

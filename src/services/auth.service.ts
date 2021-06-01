@@ -16,8 +16,6 @@ const firebaseConfig = {
 
 firebase.initializeApp(firebaseConfig);
 
-
-
 @Injectable({
   providedIn: 'root'
 })
@@ -47,6 +45,10 @@ export class AuthService {
       }
     })
 
+  }
+
+  token() {
+    return this.auth.currentUser?.getIdToken();
   }
 
   login() {
