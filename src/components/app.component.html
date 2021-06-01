@@ -1,0 +1,27 @@
+<docure-header logo="docure-workflows-logo.png">
+  <docure-header-item>
+    <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }"
+      class="docure-nav-item">Home</a>
+  </docure-header-item>
+  <docure-header-item>
+    <a routerLink="/workflows" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }"
+      class="docure-nav-item">Workflows</a>
+  </docure-header-item>
+  <docure-header-item isright>
+    <span class="docure-nav-item docure-right-nav-item" *ngIf="isAuthenticated" (click)="logout()">
+      <docure-icon logout></docure-icon>
+    </span>
+  </docure-header-item>
+  <docure-header-item isright>
+    <a routerLink="/profile" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }"
+      class="docure-nav-item docure-right-nav-item" *ngIf="isAuthenticated">
+      <docure-icon user></docure-icon>
+    </a>
+  </docure-header-item>
+  <docure-header-item isright>
+    <span class="docure-nav-item docure-right-nav-item" *ngIf="!isAuthenticated" (click)="login()">
+      <docure-icon login></docure-icon>
+    </span>
+  </docure-header-item>
+</docure-header>
+<router-outlet></router-outlet>

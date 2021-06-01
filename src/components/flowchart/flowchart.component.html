@@ -1,0 +1,10 @@
+<docure-button>Show</docure-button>
+<div class='flowchart-container'>
+  <gojs-palette [initPalette]='initPalette' [nodeDataArray]='paletteNodeData' [modelData]='paletteModelData'
+    [skipsPaletteUpdate]='skipsPaletteUpdate' [divClassName]='paletteDivClassName'>
+  </gojs-palette>
+  <gojs-diagram [initDiagram]='initDiagram' [nodeDataArray]='diagramNodeData' [linkDataArray]='diagramLinkData'
+    [modelData]='diagramModelData' [skipsDiagramUpdate]='skipsDiagramUpdate' (modelChange)='diagramModelChange($event)'
+    [divClassName]='diagramDivClassName'>
+  </gojs-diagram>
+</div>

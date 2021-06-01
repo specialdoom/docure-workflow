@@ -1,0 +1,10 @@
+<form *ngIf='selectedNode' (ngSubmit)='onCommitForm()'>
+  <p>Key: <input style="display: inline;" name='key' disabled [(ngModel)]='data.key' /></p>
+  <p>Color: <input style="display: inline;" name='color' [(ngModel)]='data.color' /></p>
+  <p>Text: <input style="display: inline;" name='text' [(ngModel)]='data.text' /></p>
+  <button type="submit">Commit</button>
+</form>
+
+<div *ngIf='!selectedNode'>
+  Select a Node to use Inspector
+</div>

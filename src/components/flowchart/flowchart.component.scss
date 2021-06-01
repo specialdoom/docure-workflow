@@ -1,0 +1,18 @@
+.flowchart-container {
+  display: flex;
+  width: 100%;
+}
+
+.myDiagramDiv {
+  background: #282c34;
+  width: calc(100vw - 254px);
+  height: calc(100vh - 68px);
+  border: 1px solid black;
+}
+
+.myPaletteDiv {
+  background: #282c34;
+  border-right: 1px solid #fff;
+  width: 250px;
+  height: calc(100vh - 66px);
+}
