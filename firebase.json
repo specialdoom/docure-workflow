@@ -4,5 +4,11 @@
       "npm --prefix \"$RESOURCE_DIR\" run lint",
       "npm --prefix \"$RESOURCE_DIR\" run build"
     ]
+  },
+  "emulators": {
+    "functions": {
+      "host": "localhost",
+      "port": "5002"
+    }
   }
 }

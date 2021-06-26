@@ -7,28 +7,12 @@ import { WorkflowService } from 'src/services/workflow.service';
   templateUrl: './workflow.component.html',
   styleUrls: ['./workflow.component.scss']
 })
-export class WorkflowComponent implements OnInit {
+export class WorkflowComponent {
   public title: string = '';
   public diagramNodeData: any[] = [];
   public diagramLinkData: any[] = [];
 
-  workflowId: string = '';
-
-  public display = this.workflowId ? this.diagramNodeData.length === 0 && this.diagramLinkData.length === 0 ? false : true : true;
-
-  constructor(private workflowService: WorkflowService, private route: ActivatedRoute) { }
-
-  ngOnInit() {
-    this.route.params.subscribe(item => this.workflowId = item.id);
-    if (this.workflowId) {
-      this.workflowService.get(this.workflowId)?.then(data => {
-        this.title = data.title;
-        this.diagramNodeData = data.nodes;
-        this.diagramLinkData = data.links;
-        this.display = true;
-      }).catch(e => console.log(e))
-    }
-  }
+  constructor(private workflowService: WorkflowService) { }
 
   show() {
     if (!this.title) {

@@ -71,7 +71,6 @@ export async function add(req: Request, res: Response) {
       nodes: nodes,
       links: links,
       date: new Date().toString(),
-      articleId: ''
     })
 
     return res.status(200).send({ message: 'Workflow added successfully!' });
