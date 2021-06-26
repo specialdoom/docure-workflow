@@ -8,7 +8,7 @@
   "emulators": {
     "functions": {
       "host": "localhost",
-      "port": "5002"
+      "port": "4201"
     }
   }
 }
