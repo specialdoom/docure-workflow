@@ -12,6 +12,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { PaletteCompoment } from './palette/palette.component';
 import { WorkflowComponent } from './pages/workflow/workflow.component';
 import { ViewWorkflowComponent } from './pages/view-workflow/view-workflow.component';
+import { PreviewWorkflowComponent } from './pages/preview-workflow/preview-workflow.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { ViewWorkflowComponent } from './pages/view-workflow/view-workflow.compo
     HomeComponent,
     PaletteCompoment,
     WorkflowComponent,
-    ViewWorkflowComponent
+    ViewWorkflowComponent,
+    PreviewWorkflowComponent
   ],
   imports: [
     BrowserModule,

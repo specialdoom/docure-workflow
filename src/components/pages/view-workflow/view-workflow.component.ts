@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { WorkflowService } from 'src/services/workflow.service';
+import { WorkflowService } from '../../../services/workflow.service';
 
 @Component({
   selector: 'app-view-workflow',
@@ -22,5 +22,4 @@ export class ViewWorkflowComponent implements OnInit {
       this.display = true;
     });
   }
-
 }
