@@ -13,12 +13,6 @@
     </span>
   </docure-header-item>
   <docure-header-item isright>
-    <a routerLink="/profile" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }"
-      class="docure-nav-item docure-right-nav-item" *ngIf="isAuthenticated">
-      <docure-icon user></docure-icon>
-    </a>
-  </docure-header-item>
-  <docure-header-item isright>
     <span class="docure-nav-item docure-right-nav-item" *ngIf="!isAuthenticated" (click)="login()">
       <docure-icon login></docure-icon>
     </span>
